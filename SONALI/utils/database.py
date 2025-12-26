@@ -3,7 +3,6 @@ from typing import Dict, List, Union
 
 from SONALI import userbot
 from SONALI.core.mongo import mongodb
-from SONALI.core.mongo import db
 
 authdb = mongodb.adminauth
 authuserdb = mongodb.authuser
