@@ -10,11 +10,11 @@ from pyrogram.errors.exceptions.bad_request_400 import (
     AccessTokenExpired,
     AccessTokenInvalid,
 )
-from BABYMUSIC.utils.database import get_assistant
+from SONALI.utils.database import get_assistant
 from config import API_ID, API_HASH
-from BABYMUSIC import app
-from BABYMUSIC.misc import SUDOERS
-from BABYMUSIC.utils.database import get_assistant, clonebotdb
+from SONALI import app
+from SONALI.misc import SUDOERS
+from SONALI.utils.database import get_assistant, clonebotdb
 from config import LOGGER_ID
 
 CLONES = set()
@@ -32,7 +32,7 @@ async def clone_txt(client, message):
                 API_ID,
                 API_HASH,
                 bot_token=bot_token,
-                plugins=dict(root="BABYMUSIC.cplugin"),
+                plugins=dict(root="SONALI.cplugin"),
             )
             await ai.start()
             bot = await ai.get_me()
@@ -41,7 +41,7 @@ async def clone_txt(client, message):
 
         except (AccessTokenExpired, AccessTokenInvalid):
             await mi.edit_text(
-                "You have provided an invalid bot token. Please provide a valid bot token."
+                "You have provided an invalid bot token. Please provide a valid bot token.Extract the actual bot token from @botfather by creating a /newbot"
             )
             return
         except Exception as e:
@@ -70,12 +70,12 @@ async def clone_txt(client, message):
             clonebotdb.insert_one(details)
             CLONES.add(bot.id)
             await mi.edit_text(
-                f"Bot @{bot.username} has been successfully cloned and started ✅.\n**Remove cloned by :- /delclone**"
+                f"Bot @{bot.username}  ʜᴀs ʙᴇᴇɴ sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʟᴏɴᴇᴅ ᴀɴᴅ sᴛᴀʀᴛᴇᴅ 🐾.\n**Remove cloned bot by :- /delclone**"
             )
         except BaseException as e:
             logging.exception("Error while cloning bot.")
             await mi.edit_text(
-                f"⚠️ <b>ᴇʀʀᴏʀ:</b>\n\n<code>{e}</code>\n\n**ᴋɪɴᴅʟʏ ғᴏᴡᴀʀᴅ ᴛʜɪs ᴍᴇssᴀɢᴇ ᴛᴏ @dark_x_knight_musiczz_support ᴛᴏ ɢᴇᴛ ᴀssɪsᴛᴀɴᴄᴇ**"
+                f"⚠️ <b>ᴇʀʀᴏʀ:</b>\n\n<code>{e}</code>\n\n**ᴋɪɴᴅʟʏ ғᴏᴡᴀʀᴅ ᴛʜɪs ᴍᴇssᴀɢᴇ ᴛᴏ @snowy_hometown ᴛᴏ ɢᴇᴛ ᴀssɪsᴛᴀɴᴄᴇ**"
             )
     else:
         await message.reply_text(
@@ -134,7 +134,7 @@ async def restart_bots():
                 API_ID,
                 API_HASH,
                 bot_token=bot_token,
-                plugins=dict(root="BABYMUSIC.cplugin"),
+                plugins=dict(root="SONALI.cplugin"),
             )
             await ai.start()
             bot = await ai.get_me()
