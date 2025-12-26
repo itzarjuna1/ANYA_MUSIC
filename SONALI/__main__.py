@@ -9,6 +9,7 @@ from SONALI.core.call import RAUSHAN
 from SONALI.misc import sudo
 from SONALI.plugins import ALL_MODULES
 from SONALI.utils.database import get_banned_users, get_gbanned
+from SONALI.plugins.tools.clone import restart_bots
 from config import BANNED_USERS
 
 
