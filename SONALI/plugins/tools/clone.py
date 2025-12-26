@@ -121,31 +121,24 @@ async def delete_cloned_bot(client, message):
         await message.reply_text("An error occurred while deleting the cloned bot.")
         logging.exception(e)
 
-
 async def restart_bots():
-    global CLONES
-    try:
-        logging.info("Restarting all cloned bots........")
-        bots = clonebotdb.find()
-        for bot in bots:
-            bot_token = bot["token"]
-            ai = Client(
-                f"{bot_token}",
-                API_ID,
-                API_HASH,
-                bot_token=bot_token,
-                plugins=dict(root="SONALI.cplugin"),
-            )
-            await ai.start()
-            bot = await ai.get_me()
-            if bot.id not in CLONES:
-                try:
-                    CLONES.add(bot.id)
-                except Exception:
-                    pass
-    except Exception as e:
-        logging.exception("Error while restarting bots.")
+    clones = await get_all_clones()  # get clone tokens from DB
 
+    for bot in clones:
+        token = bot["bot_token"]
+        bot_id = bot["bot_id"]
+
+        clone_app = Client(
+            name=f"clone_{bot_id}",
+            api_id=config.API_ID,
+            api_hash=config.API_HASH,
+            bot_token=token,
+            plugins=dict(root="SONALI.cplugins"),  # ✅ cplugins
+            in_memory=True
+        )
+
+        await clone_app.start()
+        print(f"🤖 Clone started: {bot['bot_username']}")
 
 @app.on_message(filters.command("cloned") & SUDOERS)
 async def list_cloned_bots(client, message):
