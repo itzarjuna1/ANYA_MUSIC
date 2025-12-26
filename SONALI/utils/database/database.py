@@ -449,6 +449,10 @@ async def mute_on(chat_id: int):
     mute[chat_id] = True
 
 
+# backward compatibility
+async def connect_to_chat(chat_id: int):
+    return await add_chat(chat_id)
+    
 async def mute_off(chat_id: int):
     mute[chat_id] = False
 
