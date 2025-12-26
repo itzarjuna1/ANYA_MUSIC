@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.enums import ChatMembersFilter
 from SONALI import app
-from SONALI.utils.database import connect_to_chat
+from SONALI.utils.database.database import connect_to_chat
 from SONALI.utils.decorators import AdminActual
 from config import BANNED_USERS
 
