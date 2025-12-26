@@ -792,7 +792,10 @@ async def remove_banned_user(user_id: int):
 
 # Private Served Chats
 
-
 async def get_private_served_chats() -> list:
     chats_list = []
-    async for chat in privatedb.find({"chat_id": chat_id}):
+
+    async for chat in privatedb.find({"chat_id": {"$exists": True}}):
+        chats_list.append(chat["chat_id"])
+
+    return chats_list
