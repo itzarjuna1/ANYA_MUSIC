@@ -1,6 +1,5 @@
 aiofiles
 aiohttp
-#asyncio==3.4.3
 asyncio
 beautifulsoup4
 dnspython
@@ -16,7 +15,6 @@ motor==3.3.2
 pillow==9.5.0
 psutil
 py-tgcalls==0.9.7
-pykeyboard
 pymongo==4.6.3
 python-dotenv
 pyyaml==6.0.1
@@ -26,7 +24,6 @@ SafoneAPI==1.0.65
 tgcrypto
 gpytranslate
 MukeshAPI
-search_engine_parser
 googlesearch-python
 youtube-search-python
 spotipy
@@ -35,10 +32,11 @@ speedtest-cli
 unidecode
 urllib3
 wget
-git+https://github.com/KurimuzonAkuma/pyrogram@dev
 yt-dlp
 bing_image_downloader
+bing-image-urls
+
+git+https://github.com/KurimuzonAkuma/pyrogram@dev
 git+https://github.com/alexmercerind/youtube-search-python@main
 git+https://github.com/joetats/youtube_search@master
-bing-image-urls
 git+https://github.com/TEAMPURVI/PurviAPI
